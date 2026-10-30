@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- 唯一的画面输出：本机预览（连接前）与远端画面（连接后）都在这里做左右分屏 -->
+    <android.opengl.GLSurfaceView
+        android:id="@+id/vrView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- 顶部状态悬浮条 -->
+    <LinearLayout
+        android:id="@+id/panelTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_margin="8dp"
+        android:background="@drawable/bg_panel"
+        android:orientation="vertical"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="8dp">
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="状态：正在搜索对方…"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvFps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发送 FPS：0  接收 FPS：0"
+            android:textColor="#FFD54F"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvDiag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已发送：0 KB  接收：0 kbps  丢帧：0"
+            android:textColor="#80D8FF"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- 底部按钮悬浮条（两行） -->
+    <LinearLayout
+        android:id="@+id/panelBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="8dp"
+        android:background="@drawable/bg_panel"
+        android:orientation="vertical"
+        android:padding="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnStartCamera"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_accent"
+                android:minHeight="0dp"
+                android:paddingVertical="8dp"
+                android:text="开摄像头"
+                android:textColor="#1A1A1A"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btnResolution"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_ghost"
+                android:minHeight="0dp"
+                android:paddingVertical="8dp"
+                android:text="画质：1080P"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btnSelectCamera"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_ghost"
+                android:minHeight="0dp"
+                android:paddingVertical="8dp"
+                android:text="选择镜头"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btnRotate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_ghost"
+                android:minHeight="0dp"
+                android:paddingVertical="8dp"
+                android:text="旋转"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnImmersive"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_accent"
+                android:minHeight="0dp"
+                android:paddingVertical="8dp"
+                android:text="沉浸"
+                android:textColor="#1A1A1A"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnOpenHotspot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_ghost"
+                android:minHeight="0dp"
+                android:paddingVertical="8dp"
+                android:text="开热点"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnConnectHotspot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_ghost"
+                android:minHeight="0dp"
+                android:paddingVertical="8dp"
+                android:text="连热点"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnAutoConnect"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_ghost"
+                android:minHeight="0dp"
+                android:paddingVertical="8dp"
+                android:text="重新搜索"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnDisconnect"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_ghost"
+                android:minHeight="0dp"
+                android:paddingVertical="8dp"
+                android:text="断开"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btnLog"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_ghost"
+                android:minHeight="0dp"
+                android:paddingVertical="8dp"
+                android:text="日志"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 沉浸模式下铺在最上层，点一下退出沉浸 -->
+    <View
+        android:id="@+id/immersiveCatcher"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:focusable="false"
+        android:visibility="gone" />
+</FrameLayout>
